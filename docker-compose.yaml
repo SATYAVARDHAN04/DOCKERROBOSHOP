@@ -63,7 +63,7 @@ services:
       - user
       - cart
       - shipping
-      - payemnt
+      - payment
 
 networks:
   default:
