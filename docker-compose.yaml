@@ -1,6 +1,6 @@
 services:
   mongodb:
-    image: satyology/mogodb:v1
+    image: satyology/mongodb:v1
     container_name: mongodbcontainer
 
   catalogue:
@@ -40,12 +40,12 @@ services:
 
   rabbitmq:
     image: rabbitmq:3
-    container: rabbitmqcontainer
+    container_name: rabbitmqcontainer
     environment:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshoproboshop123
 
-  payemnt:
+  payment:
     image: satyology/payment:v1
     container: paymentcontainer
     depends_on:
