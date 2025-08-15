@@ -55,7 +55,7 @@ services:
 
   frontend:
     image: satyology/frontend:v1
-    container: frontendcontainer
+    container_name: frontendcontainer
     ports:
       - "80:80"
     depends_on:
