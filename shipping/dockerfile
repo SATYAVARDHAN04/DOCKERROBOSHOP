@@ -1,0 +1,13 @@
+FROM maven
+RUN mkdir app
+WORKDIR app
+COPY pom.xml .
+COPY src /app/src
+RUN mvn clean package 
+RUN mv /app/target/shipping-1.0.jar /app/shipping.jar
+ENV CART_ENDPOINT="cartcontainer:8080" \
+    DB_HOST="mysqlcontainer"
+CMD ["java", "-jar", "shipping.jar"]
+
+
+

@@ -1,0 +1,72 @@
+services:
+  mongodb:
+    image: satyology/mogodb:v1
+    container_name: mongodbcontainer
+
+  catalogue:
+    image: satyology/catalogue:v1
+    container_name: cataloguecontainer
+    depends_on:
+      - mongodb
+
+  redis:
+    image: redis:7.0
+    container_name: rediscontainer
+
+  cart:
+    image: satyology/cart:v1
+    container_name: cartcontainer
+    depends_on:
+      - catalogue
+      - redis
+
+  user:
+    image: satyology/user:v1
+    container_name: usercontainer
+    depends_on:
+      - redis
+      - mongodb
+
+  mysql:
+    image: satyology/mysql:v1
+    container_name: mysqlcontainer
+
+  shipping:
+    image: satyology/shipping:v1
+    container_name: shippingcontainer
+    depends_on:
+      - cart
+      - mysql
+
+  rabbitmq:
+    image: rabbitmq:3
+    container: rabbitmqcontainer
+    environment:
+      - RABBITMQ_DEFAULT_USER: roboshop
+      - RABBITMQ_DEFAULT_PASS: roboshoproboshop123
+
+  payemnt:
+    image: satyology/payment:v1
+    container: paymentcontainer
+    depends_on:
+      - cart
+      - user
+      - rabbitmq
+
+  frontend:
+    image: satyology/frontend:v1
+    container: frontendcontainer
+    ports:
+      - "80:80"
+    depends_on:
+      - catalogue
+      - user
+      - cart
+      - shipping
+      - payemnt
+
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: true #only if created
