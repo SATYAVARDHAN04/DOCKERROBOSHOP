@@ -1,6 +1,13 @@
 FROM nginx:1.24
 RUN rm -rf /usr/share/nginx/html/* 
 RUN rm -rf /etc/nginx/nginx.conf
-COPY nginx.conf /etc/nginx
-WORKDIR /usr/share/nginx/html 
-COPY code/* .
+RUN rm -f /etc/nginx/conf.d/default.conf
+
+# Copy custom nginx config
+ADD nginx.conf /etc/nginx/nginx.conf
+
+# Set working directory for web content
+WORKDIR /usr/share/nginx/html
+
+# Copy frontend files
+ADD code /usr/share/nginx/html/
