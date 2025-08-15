@@ -1,10 +1,10 @@
 services:
   mongodb:
-    image: satyology/mongodb:v1
+    image: satyology/mongodb
     container_name: mongodbcontainer
 
   catalogue:
-    image: satyology/catalogue:v1
+    image: satyology/catalogue
     container_name: cataloguecontainer
     depends_on:
       - mongodb
@@ -14,25 +14,25 @@ services:
     container_name: rediscontainer
 
   cart:
-    image: satyology/cart:v1
+    image: satyology/cart
     container_name: cartcontainer
     depends_on:
       - catalogue
       - redis
 
   user:
-    image: satyology/user:v1
+    image: satyology/user
     container_name: usercontainer
     depends_on:
       - redis
       - mongodb
 
   mysql:
-    image: satyology/mysql:v1
+    image: satyology/mysql
     container_name: mysqlcontainer
 
   shipping:
-    image: satyology/shipping:v1
+    image: satyology/shipping
     container_name: shippingcontainer
     depends_on:
       - cart
@@ -46,7 +46,7 @@ services:
       RABBITMQ_DEFAULT_PASS: roboshoproboshop123
 
   payment:
-    image: satyology/payment:v1
+    image: satyology/payment
     container_name: paymentcontainer
     depends_on:
       - cart
@@ -54,7 +54,7 @@ services:
       - rabbitmq
 
   frontend:
-    image: satyology/frontend:v1
+    image: satyology/frontend
     container_name: frontendcontainer
     ports:
       - "80:80"
