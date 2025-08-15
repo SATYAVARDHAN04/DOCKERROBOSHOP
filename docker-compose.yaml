@@ -42,8 +42,8 @@ services:
     image: rabbitmq:3
     container: rabbitmqcontainer
     environment:
-      - RABBITMQ_DEFAULT_USER: roboshop
-      - RABBITMQ_DEFAULT_PASS: roboshoproboshop123
+      RABBITMQ_DEFAULT_USER: roboshop
+      RABBITMQ_DEFAULT_PASS: roboshoproboshop123
 
   payemnt:
     image: satyology/payment:v1
