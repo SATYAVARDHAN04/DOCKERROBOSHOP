@@ -117,3 +117,7 @@ docker inspect <container_name>
 ```
 
 **LOOKS FOR CONTAINER INFO LIKE IP ADDRESS, PORT OPENED, DNS**
+
+```bash
+for i in mongodb catalogue user cart mysql shipping payment;do cd $i;docker build -t satyology/$i .;docker push satyology/$i;done
+```
