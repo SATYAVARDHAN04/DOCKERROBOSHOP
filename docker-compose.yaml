@@ -47,7 +47,7 @@ services:
 
   payment:
     image: satyology/payment:v1
-    container: paymentcontainer
+    container_name: paymentcontainer
     depends_on:
       - cart
       - user
