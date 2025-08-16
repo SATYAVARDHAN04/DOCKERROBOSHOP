@@ -10,4 +10,4 @@ ADD nginx.conf /etc/nginx/nginx.conf
 WORKDIR /usr/share/nginx/html
 
 # Copy frontend files
-ADD code /usr/share/nginx/html/
+ADD code/ /usr/share/nginx/html/
