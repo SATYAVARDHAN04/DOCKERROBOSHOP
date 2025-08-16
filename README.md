@@ -121,3 +121,8 @@ docker inspect <container_name>
 ```bash
 for i in mongodb catalogue user cart mysql shipping payment;do cd $i;docker build -t satyology/$i .;docker push satyology/$i;done
 ```
+
+```bash
+for i in mongodb catalogue user cart mysql shipping payment; do docker pull satyology/$i; done
+```
+
